@@ -8,12 +8,11 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/usr/workspace
-    command: /bin/sh -c "STAGE=$$STAGE pytest -sv --alluredir=allure-results"
+    command: /bin/sh -c "pytest -sv --alluredir=allure-results"
     working_dir: /usr/workspace
     environment:
       STAGE: prod
       SUIT: users
-      API_TOKEN: ${API_TOKEN}
 
   report:
     image: api-tests:v1
